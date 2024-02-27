@@ -1,0 +1,34 @@
+ public class ListNode {
+     int val;
+     ListNode next;
+     ListNode() {}
+     ListNode(int val) { this.val = val; }
+     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode d1=list1;
+        ListNode d2=list2;
+        ListNode dNode=new ListNode(-1);
+        ListNode temp=dNode;
+        while(d1!=null && d2!=null){
+            if(d1.val<d2.val){
+                temp.next = d1;
+                temp=d1;
+                d1=d1.next;
+            }
+            else{
+                temp.next=d2;
+                temp=d2;
+                d2=d2.next;
+            }
+        }
+        if(d1!=null){
+            temp.next=d1;
+        }else{
+            temp.next=d2;
+        }
+        return dNode.next;
+    }
+}
